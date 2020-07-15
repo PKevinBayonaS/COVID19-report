@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    
+	<title>Status Global de COVID-19</title>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+    crossorigin="anonymous">
+  </head>
+
+  <body>
+	  <div class="container">
+		
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h1 class="display-4">Status Global de COVID-19</h1>
+		    <p class="lead">En esta aplicacion se muestran todos los casos reportados a nivel mundial de coronavirus</p>
+		    </div>
+		    <div class="container">
+			    <div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h2 class="card-title" th:text="${totaldeCasosReportados}"></h2>
+				    <p class="card-text">casos reportados al dia de hoy</p>
+				  </div>
+				</div>
+				<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h3 class="card-title" th:text="${totaldenuevoscasos}"></h3>
+				    <p class="card-text">numero de nuevos casos</p>
+				  </div>
+				</div>
+			</div>
+		</div>
+		 <table class="table">
+	      <tr>
+	        <th>Pais</th>
+	        <th>Estado</th>
+	        <th>Ultimos casos</th>
+	        <th>Aumento de casos</th>
+	      </tr>
+	      <tr th:each="locationstate : ${locationStates}">
+	        <td th:text="${locationstate.contry}"></td>
+	        <td th:text="${locationstate.state}"></td>
+	        <td th:text="${locationstate.LatestCase}">0</td>
+	        <td th:text="${locationstate.DiffCase}">0</td>
+	      </tr>
+	    </table>
+	  </div>
+  </body>
+
+</html>
